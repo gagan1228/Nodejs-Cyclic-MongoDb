@@ -87,3 +87,25 @@ exports.createVendor=async(req,res)=>{
     
 }
 }
+exports.getallvendors=async(req,res)=>{
+    try{
+    const vendors=await Vendor.find();
+    res.status(200).json({
+        status:'success',
+        data:{
+            results:vendors.length,
+            data:{
+                vendors
+            }
+
+        }
+    })
+    }catch(err){
+    res.status(400).json({
+        status:"fail",
+        message:err
+    })
+    
+}
+
+}
