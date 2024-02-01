@@ -97,14 +97,16 @@ exports.createVendor=catchAsync(async(req,res,next)=>{
         console.log(Otp)
         try{
             await sendEmail({
-                email:"gagand1902@gmail.com",
+                email:req.body.email,
                 //req.body.email,
                 subject:'Your otp for  verification is sent',
                 message:Otp
             })
             res.status(200).json({
                 status:'success',
-                message:'Token sent to email'
+                message:'Token sent to email',
+                otp:Otp
+
             })}
             catch(err)
             {
@@ -130,7 +132,7 @@ exports.createVendor=catchAsync(async(req,res,next)=>{
 
 )
 exports.signupvendor=catchAsync(async(req,res,next)=>{
-    if(req.body.otp===7937)
+    if(req.body.isverified)
     {
         const newVendor=await Vendor.create(req.body);
             const token=signToken(Vendor._id)
@@ -279,8 +281,9 @@ exports.forgotPassword=catchAsync(async (req,res,next)=>{
     ${reseturl}.\n If you dint forget your password please ignore it`
     try{
     await sendEmail({
-        email:"gagand1902@gmail.com",
-        //vendor.email,
+        email:vendor.email,
+        //"gagand1902@gmail.com",
+        //
         subject:'Your password reset token (valid for 10 mins',
         message
     })
