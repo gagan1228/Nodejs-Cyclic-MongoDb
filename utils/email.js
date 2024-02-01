@@ -8,7 +8,7 @@ const sendEmail= async options=>{
         secure:false,
         //process.env.EMAIL_PORT,
         auth:{
-            user:"hemanthharsha27@gmail.com",
+            user:"t6576443@gmail.com",
             //process.env.EMAIL_USER,
             pass:"szghurbxhfmicggr"
             //process.env.EMAIL_PASSWORD
