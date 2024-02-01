@@ -10,7 +10,7 @@ const sendEmail= async options=>{
         auth:{
             user:"hemanthharsha27@gmail.com",
             //process.env.EMAIL_USER,
-            pass:""
+            pass:"szghurbxhfmicggr"
             //process.env.EMAIL_PASSWORD
         }
     })
