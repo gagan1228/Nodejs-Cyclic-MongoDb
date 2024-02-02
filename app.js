@@ -1,6 +1,7 @@
 const express=require('express');
 const morgan = require('morgan');
 const rateLimit=require('express-rate-limit')
+const cors=require('cors')
 const AppError=require('./utils/appError')
 const globalErrorHandler=require('./controllers/errorController')
 const tourRouter=require('./routes/tourRoutes')
@@ -9,6 +10,7 @@ const subcategoryRouter=require('./routes/subcategoryRoutes')
 const vendorRouter=require('./routes/vendorRoutes')
 const userRouter=require('./routes/userRoutes')
 const app=express();
+app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(express.static(`${__dirname}/public`))
