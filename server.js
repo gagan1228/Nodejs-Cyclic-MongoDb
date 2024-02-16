@@ -2,7 +2,11 @@ const mongoose=require('mongoose')
 const dotenv=require('dotenv')
 const app=require('./app')
 const cors=require('cors')
-app.use(cors())
+app.use(cors(
+    {
+        origin:"http://localhost:5173"
+    }
+))
 process.on('uncaughtException',err=>{
     console.log('Uncaught Exception Shutting Down')
     console.log(err.name,err.message)

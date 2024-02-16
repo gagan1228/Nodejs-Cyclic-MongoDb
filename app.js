@@ -11,7 +11,11 @@ const subcategoryRouter=require('./routes/subcategoryRoutes')
 const vendorRouter=require('./routes/vendorRoutes')
 const userRouter=require('./routes/userRoutes')
 const app=express();
-app.use(cors())
+app.use(cors(
+    {
+        origin:"http://localhost:5173"
+    }
+))
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(express.static(`${__dirname}/public`))
