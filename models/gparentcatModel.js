@@ -1,28 +1,24 @@
 const { text } = require('express');
 const mongoose=require('mongoose')
-const categoriesSchema=new mongoose.Schema({
+const category=require('./../models/categoryModel')
+const gparentSchema=new mongoose.Schema({
     name:{
         type:String,
         required:[true,"A category must have name"],
         unique:true
     },
-    gparentcat:{
-        type:String,
-        required:[true,"A category ust have a grandparent "]
-
-    },
-    catimg:{
+    gpcatimg:{
         type:String,
         required:[true,"A category must have a image"]
     },
-    subcategories:[
+    categories:[
         {
         type : mongoose.Schema.ObjectId,
-        ref : 'SubCategory1'
+        ref : 'Category'
         }
     ]
 })
 
 
-const Category=mongoose.model('Category',categoriesSchema)
-module.exports=Category
+const gparentCategory=mongoose.model('gparentCategory',gparentSchema)
+module.exports=gparentCategory
