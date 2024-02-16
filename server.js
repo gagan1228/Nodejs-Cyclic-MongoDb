@@ -4,7 +4,7 @@ const app=require('./app')
 const cors=require('cors')
 app.use(cors(
     {
-        origin:"http://localhost:5173"
+        origin:"*"
     }
 ))
 process.on('uncaughtException',err=>{
