@@ -11,13 +11,16 @@ const subcategoryRouter=require('./routes/subcategoryRoutes')
 const vendorRouter=require('./routes/vendorRoutes')
 const userRouter=require('./routes/userRoutes')
 const app=express();
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    res.sendStatus(201);
+app.use(cors(
+    {origin: "http://localhost:5173",
+    methods : ["GET", "POST", "PUT", "DELETE"]
+})
+)
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
-  });
+    });
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(express.static(`${__dirname}/public`))
