@@ -11,11 +11,12 @@ const subcategoryRouter=require('./routes/subcategoryRoutes')
 const vendorRouter=require('./routes/vendorRoutes')
 const userRouter=require('./routes/userRoutes')
 const app=express();
-app.use(cors(
-    {
-        origin:"*"
-    }
-))
+app.use(cors())
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+    });
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(express.static(`${__dirname}/public`))
