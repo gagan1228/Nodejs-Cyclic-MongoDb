@@ -13,7 +13,7 @@ const userRouter=require('./routes/userRoutes')
 const app=express();
 app.use(cors(
     {origin: "http://localhost:5173",
-    methods : ["GET", "POST", "PUT", "DELETE"]
+    credentials : true,
 })
 )
 app.use(function(req, res, next) {
