@@ -132,29 +132,30 @@ exports.createVendor=catchAsync(async(req,res,next)=>{
 
 )
 exports.signupvendor=catchAsync(async(req,res,next)=>{
-    if(req.body.isverified)
-    {
-        const newVendor=await Vendor.create(req.body);
-            const token=signToken(Vendor._id)
-           res.status(201).json({
-               status:'success',
-               token:token,
-               data:{
-                   vendor:newVendor
-        
-               }
-           })
-    }
-    else
-    {
-        res.status(400).json({
-            status:'fail',
-            message:'otp is incorrect'
+    const newVendor=await Vendor.create(req.body);
+    const token=signToken(Vendor._id)
+   res.status(201).json({
+       status:'success',
+       token:token,
+       data:{
+           vendor:newVendor
+
+       }
+   })
+//     if(req.body.isverified)
+//     {
+       
+//     }
+//     else
+//     {
+//         res.status(400).json({
+//             status:'fail',
+//             message:'otp is incorrect'
             
-        })
+//         })
         
-    }
-})
+//     }
+// })
 // exports.createVendor=catchAsync(async (req,res,next) => {
      
 //     const newVendor=await Vendor.create(req.body);
@@ -169,7 +170,7 @@ exports.signupvendor=catchAsync(async(req,res,next)=>{
 //    })
 
 
-// })
+})
 exports.getallvendors=async(req,res)=>{
     try{
     const vendors=await Vendor.find();
