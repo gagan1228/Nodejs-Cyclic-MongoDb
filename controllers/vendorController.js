@@ -132,6 +132,7 @@ exports.createVendor=catchAsync(async(req,res,next)=>{
 
 )
 exports.signupvendor=catchAsync(async(req,res,next)=>{
+    console.log(req.body);
     const newVendor=await Vendor.create(req.body);
     const token=signToken(Vendor._id)
    res.status(201).json({
